@@ -1,0 +1,1 @@
+import is2_test_data.core.get_data as get_data
