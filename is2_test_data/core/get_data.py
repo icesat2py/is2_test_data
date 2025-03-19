@@ -7,26 +7,20 @@ obtain a single granule of each data product
 
 """
 Tasks:
-- set up credentials in GH repo
 - figure out how to get an ATL11 file
-- see if QL products are available via earthaccess (or icepyx); currently no results from either, even with virtually no bounds
 - set up reference script with the list of products (currently prod_list.py, see icepyx url file)
-X- figure out the best output format for storing the vars list and create the file
 X- add in functionality to update the vars dicts whenever a new file is run for that product
 - docstrings and run code
-- see if earthaccess will run w/o strategy specified now that login is first
+- add typing
 
 - from icepyx, get the vars from the file created herein
 
-then...
+
+open as issues for future work:
 - set up an action to run this on a cron every so often
-    - include a check for changes in version/file to avoid downloading when the file hasn't changed?
-- make it so that any of these can scripts can be run with a custom product list (versus the whole thing)
+- check for changes in version/file to avoid downloading when the file hasn't changed
 - make sure that no data gets saved, but we can download a granule and use it to get vars or do test as needed
-- see if there are any examples for doing this?
-
-
-
+- provide variables info for QL products (currently they're not available via icepyx or earthaccess)
 
 """
 
