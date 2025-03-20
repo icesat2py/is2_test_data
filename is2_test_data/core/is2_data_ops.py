@@ -66,7 +66,7 @@ class IS2_DataOps:
                 "ATL09",
                 # "ATL09QL",
                 "ATL10",
-                # "ATL11",
+                "ATL11",
                 "ATL12",
                 "ATL13",
                 "ATL14",
@@ -105,8 +105,8 @@ class IS2_DataOps:
     def download_single_product(
         self, 
         prod: ICESat2ProductShortName, 
-        spatial: list[float | int], 
-        temporal: list[str]
+        spatial: tuple[float | int, float | int, float | int, float | int], 
+        temporal: tuple[str, str] | None,
         ) -> None:
         """
         Download data for a single product using earthaccess
@@ -117,12 +117,13 @@ class IS2_DataOps:
             ICESat-2 data product ID, also known as "short name" (e.g. ATL03).
             Available data products can be found at: https://nsidc.org/data/icesat-2/data-sets
 
-        spatial : list of floats
-            The spatial extent as a list of coordinates in decimal degrees of [lower-left-longitude,
+        spatial : tuple of floats
+            The spatial extent as a tuple of coordinates in decimal degrees of [lower-left-longitude,
             lower-left-latitute, upper-right-longitude, upper-right-latitude]
 
-        temporal: list of strings
-            A list containing the string representation for the start and end dates formatted as "YYYY-MM-DD"
+        temporal: tuple of strings or None
+            A tuple containing the string representation for the start and end dates formatted as "YYYY-MM-DD"
+            or None for ATL11
 
         Examples
         --------
@@ -134,8 +135,8 @@ class IS2_DataOps:
 
         query = ea.search_data(
         short_name=prod,
-        bounding_box=tuple(spatial),
-        temporal=tuple(temporal),
+        bounding_box=spatial,
+        temporal=temporal,
         count=1
         )
 
@@ -153,10 +154,14 @@ class IS2_DataOps:
             Available data products can be found at: https://nsidc.org/data/icesat-2/data-sets
 
         """
-        spatial = [-55, 68, -48, 71]
-        temporal = ['2019-02-20','2019-02-28']
+        spatial = (-55, 68, -48, 71)
+        temporal = ('2019-02-20','2019-02-28')
 
-        self.download_single_product(prod, spatial, temporal)
+        if prod == 'ATL11':
+            self.download_single_product(prod, spatial, temporal=None)
+            
+        else:
+            self.download_single_product(prod, spatial, temporal)
 
 
     def get_vars(self, prod: ICESat2ProductShortName) -> list:

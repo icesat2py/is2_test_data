@@ -6,10 +6,6 @@ to create/update the json of variables for all data products.
 If only certain products need updating, first modify the first line
 to list the products you want updated.
 
-Tasks:
-- figure out how to get an ATL11 file
-
-
 """
 # get all products (except QLs, which don't work)
 # ops = is2_data_ops.IS2_DataOps()
