@@ -1,22 +1,23 @@
 import is2_data_ops
 
 """
+Simply run this script, with no products specified in the first line,
+to create/update the json of variables for all data products.
+If only certain products need updating, first modify the first line
+to list the products you want updated.
+
 Tasks:
 - figure out how to get an ATL11 file
-- run code
-- from icepyx, get the vars from the file created herein
 
-
-open as issues for future work:
-- set up an action to run this on a cron every so often
-- check for changes in version/file to avoid downloading when the file hasn't changed
-- make sure that no data gets saved, but we can download a granule and use it to get vars or do test as needed
-- provide variables info for QL products (currently they're not available via icepyx or earthaccess)
-- set up reference script with the list of products (versus manually hard-coding)?
 
 """
+# get all products (except QLs, which don't work)
+# ops = is2_data_ops.IS2_DataOps()
 
-ops = is2_data_ops.IS2_DataOps()
+# get a list of specific products
+ops = is2_data_ops.IS2_DataOps(products=["ATL11"])
+
+# update the product dictionary for all products specified above
 ops.update_vars_dict()
 
 
