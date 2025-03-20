@@ -1,0 +1,1 @@
+from is2_test_data.core import get_product_vars
