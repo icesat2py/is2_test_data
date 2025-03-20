@@ -16,7 +16,7 @@ class IS2_DataOps:
     Data object to navigate ICESat-2 products for variable lists and testing.
 
     Parameters
-    ----------
+    ----------  
     products : List(string)
         ICESat-2 data product IDs, also known as "short name" (e.g. ATL03).
         Available data products can be found at: https://nsidc.org/data/icesat-2/data-sets
@@ -56,28 +56,30 @@ class IS2_DataOps:
 
         if products is None:
             ######## Products to get #######
-            # ATL01, ATL02, ATL04 are not included
+            # ATL01, ATL02, ATL04, and QLs are not included
             self.products = [
-                # "ATL03",
-                # "ATL06",
-                # "ATL07",
-                # # "ATL07QL",
-                # "ATL08",
+                "ATL03",
+                "ATL06",
+                "ATL07",
+                # "ATL07QL",
+                "ATL08",
                 "ATL09",
                 # "ATL09QL",
-                # "ATL10",
-                # # "ATL11",
-                # "ATL12",
-                # "ATL13",
-                # "ATL14",
-                # "ATL15",
-                # "ATL16",
-                # "ATL17",
-                # "ATL19",
-                # "ATL20",
-                # "ATL21",
-                # "ATL23",
+                "ATL10",
+                # "ATL11",
+                "ATL12",
+                "ATL13",
+                "ATL14",
+                "ATL15",
+                "ATL16",
+                "ATL17",
+                "ATL19",
+                "ATL20",
+                "ATL21",
+                "ATL23",
                 ]
+        else:
+            self.products = products
 
 
     
