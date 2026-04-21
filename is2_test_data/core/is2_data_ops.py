@@ -77,6 +77,7 @@ class IS2_DataOps:
                 "ATL20",
                 "ATL21",
                 "ATL23",
+                "ATL24"
                 ]
         else:
             self.products = products
