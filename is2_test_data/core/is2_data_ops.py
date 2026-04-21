@@ -77,7 +77,7 @@ class IS2_DataOps:
                 "ATL20",
                 "ATL21",
                 "ATL23",
-                "ATL24"
+                # "ATL24"
                 ]
         else:
             self.products = products
@@ -181,12 +181,15 @@ class IS2_DataOps:
             List of strings of all available groups/paths and variables for that product.
         """
 
-        #regex string format to combine path and product
-        granule_path = ipx.core.read._parse_source(f"{self.data_path!s}/*{prod!s}*")
-        print(granule_path)
-        vars = ipx.Variables(path=granule_path[0])
+        try:
+            #regex string format to combine path and product
+            granule_path = ipx.core.read._parse_source(f"{self.data_path!s}/*{prod!s}*")
+            print(granule_path)
+            vars = ipx.Variables(path=granule_path[0])
 
-        return vars.avail()
+            return vars.avail()
+        except Exception:
+            print(f"There was an issue getting Variables for {prod}")
 
 
     def update_vars_dict(self) -> None:
