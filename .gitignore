@@ -53,6 +53,7 @@ cover/
 
 # Data
 *.h5
+*.nc
 
 # Translations
 *.mo
